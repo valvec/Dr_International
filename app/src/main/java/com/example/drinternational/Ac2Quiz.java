@@ -12,3 +12,5 @@ public class Ac2Quiz extends AppCompatActivity {
         setContentView(R.layout.activity_ac2_quiz);
     }
 }
+
+//wazzzupps
