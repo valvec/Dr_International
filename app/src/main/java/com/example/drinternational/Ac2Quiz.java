@@ -11,7 +11,8 @@ import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback {
-
+    private StreetViewPanorama streetViewPanorama;
+    private boolean secondlocation=false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
