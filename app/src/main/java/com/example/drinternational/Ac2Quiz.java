@@ -9,6 +9,7 @@ import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.StreetViewSource;
 
 public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback {
     private StreetViewPanorama streetViewPanorama;
@@ -26,7 +27,7 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     @Override
     public void onStreetViewPanoramaReady(StreetViewPanorama streetViewPanorama) {
         LatLng sanFrancisco = new LatLng(37.754130, -122.447129);
-        streetViewPanorama.setPosition(sanFrancisco);
+        streetViewPanorama.setPosition(sanFrancisco, StreetViewSource.OUTDOOR);
     }
 
 
