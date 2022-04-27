@@ -1,5 +1,7 @@
 package com.example.drinternational;
 
+import static java.lang.Thread.sleep;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,14 +20,14 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ac2_quiz);
-        SupportStreetViewPanoramaFragment streetViewPanoramaFragment =
-                (SupportStreetViewPanoramaFragment) getSupportFragmentManager()
-                        .findFragmentById(R.id.streetviewpanorama);
+        SupportStreetViewPanoramaFragment streetViewPanoramaFragment = (SupportStreetViewPanoramaFragment) getSupportFragmentManager().findFragmentById(R.id.street_view_panorama);
+        assert streetViewPanoramaFragment != null;
         streetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
 
     }
     @Override
     public void onStreetViewPanoramaReady(StreetViewPanorama streetViewPanorama) {
+
         LatLng sanFrancisco = new LatLng(37.754130, -122.447129);
         streetViewPanorama.setPosition(sanFrancisco, StreetViewSource.OUTDOOR);
     }
