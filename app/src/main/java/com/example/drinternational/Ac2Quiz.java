@@ -12,8 +12,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.StreetViewSource;
 
 public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback {
-    private StreetViewPanorama streetViewPanorama;
-    private boolean secondlocation=false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +24,9 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     }
     @Override
     public void onStreetViewPanoramaReady(StreetViewPanorama streetViewPanorama) {
-        LatLng sanFrancisco = new LatLng(37.754130, -122.447129);
-        streetViewPanorama.setPosition(sanFrancisco, StreetViewSource.OUTDOOR);
+        //LatLng sanFrancisco = new LatLng(46.16915530536032, 14.4793833352353);
+        LatLng repnje = new LatLng(46.168984555149, 14.479322643771296);
+        streetViewPanorama.setPosition(repnje, StreetViewSource.OUTDOOR);
     }
 
 
