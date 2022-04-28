@@ -2,4 +2,12 @@
     <string name="app_name">DrInternational</string>
     <string name="NewGame">New Game</string>
     <string name="SelectMap">Select Map</string>
+    <string name="share_on_facebook">SHARE ON FACEBOOK</string>
+    <string name="share_on_twitter">SHARE ON TWITTER</string>
+    <string name="error">ERROR</string>
+    <string name="new_game">New Game</string>
+    <string name="return_to_main_menu">Return to main menu</string>
+    <string name="klucTopScore">kljuctopscore25255525</string>
+    <string name="HighScoreText">High score: </string>
+    <string name="ScoreText">Score: </string>
 </resources>

@@ -5,6 +5,7 @@ import static java.lang.Thread.sleep;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -72,9 +73,9 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     }
 
     void finishQuiz(){
-        Toast vt=Toast.makeText(this,"konec " + (Integer.toString(score)),Toast.LENGTH_SHORT);
-        vt.show();
-        naloziLokacijo();
+        Intent intent= new Intent(this,End_game.class);
+        intent.putExtra("score",score);
+        startActivity(intent);
     }
 
     @Override
