@@ -100,7 +100,7 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
         if (randomNum2 >= 0 && randomNum2 < 1) ansA.setText(map.correctAnswers[currentIndex]);
         if (randomNum2 >= 1 && randomNum2 < 2) ansB.setText(map.correctAnswers[currentIndex]);
         if (randomNum2 >= 2 && randomNum2 < 3) ansC.setText(map.correctAnswers[currentIndex]);
-        if (randomNum2 >= 3 && randomNum2 < 4) ansD.setText(map.correctAnswers[currentIndex]);
+        if (randomNum2 >= 3 && randomNum2 <= 4) ansD.setText(map.correctAnswers[currentIndex]);
 
     }
 
