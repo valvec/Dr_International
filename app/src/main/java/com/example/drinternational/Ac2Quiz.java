@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
+import com.google.android.gms.maps.StreetViewPanoramaOptions;
 import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.StreetViewSource;
+import com.google.android.material.tabs.TabLayout;
 
-import java.util.HashSet;
 
 public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback, View.OnClickListener {
-    private StreetViewPanorama streetViewPanorama;
-    private boolean secondlocation=false;
     int currentIndex=0;
     int totalQuestion = map.koordinate.length;
     Button ansA, ansB, ansC, ansD;
@@ -53,33 +53,28 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     }
 
 
-    static boolean preveriDuplikate(int arr[], int k)
-    {
-        HashSet<Integer> set = new HashSet<>();
-        for (int i=0; i<arr.length; i++)
-        {
-            if (set.contains(arr[i]))
-                return true;
-            set.add(arr[i]);
-            if (i >= k)
-                set.remove(arr[i-k]);
-        }
-        return false;
-    }
-
 
     void naloziLokacijo(){
         int randomNum;
         int u = 0;
         int selectionIndexesABCD[] = {-1,-1,-1,-1};
 
-        while(selectionIndexesABCD[3]!=-1){
+
+        randomNum = (int)(Math.random() * (map.allCountries.length-1));
+        selectionIndexesABCD[0] = randomNum;
+
+        while (selectionIndexesABCD[1]==-1 || selectionIndexesABCD[2]==-1 || selectionIndexesABCD[3]==-1) {
             randomNum = (int)(Math.random() * (map.allCountries.length-1));
-            if(!preveriDuplikate(selectionIndexesABCD, randomNum)){
-                selectionIndexesABCD[u]=randomNum;
-                u++;
-            }
+            if (selectionIndexesABCD[0] != randomNum) { selectionIndexesABCD[1] = randomNum; }
+
+            randomNum = (int)(Math.random() * (map.allCountries.length-1));
+            if(selectionIndexesABCD[1]!=randomNum && selectionIndexesABCD[0]!=randomNum){selectionIndexesABCD[2]=randomNum;}
+
+            randomNum = (int)(Math.random() * (map.allCountries.length-1));
+            if(selectionIndexesABCD[2]!=randomNum && selectionIndexesABCD[1]!=randomNum && selectionIndexesABCD[0]!=randomNum){selectionIndexesABCD[3]=randomNum;}
+
         }
+        //Toast.makeText(this, Integer.toString(randomNum), Toast.LENGTH_LONG).show();
 
 
 
@@ -92,15 +87,21 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
             finishQuiz();
             return;
         }
-        selectionIndexesABCD[0] = 0;
-        selectionIndexesABCD[1]=0;
-        selectionIndexesABCD[2] = 0;
-        selectionIndexesABCD[3]=0;
+
         streetViewPanorama1.setPosition(map.koordinate[currentIndex],StreetViewSource.OUTDOOR);
+        streetViewPanorama1.setStreetNamesEnabled(false);
+        streetViewPanorama1.setUserNavigationEnabled(false);
         ansA.setText(map.allCountries[selectionIndexesABCD[0]]);
         ansB.setText(map.allCountries[selectionIndexesABCD[1]]);
         ansC.setText(map.allCountries[selectionIndexesABCD[2]]);
         ansD.setText(map.allCountries[selectionIndexesABCD[3]]);
+
+        double randomNum2 = Math.round(Math.random() * 4);
+        if (randomNum2 >= 0 && randomNum2 < 1) ansA.setText(map.correctAnswers[currentIndex]);
+        if (randomNum2 >= 1 && randomNum2 < 2) ansB.setText(map.correctAnswers[currentIndex]);
+        if (randomNum2 >= 2 && randomNum2 < 3) ansC.setText(map.correctAnswers[currentIndex]);
+        if (randomNum2 >= 3 && randomNum2 < 4) ansD.setText(map.correctAnswers[currentIndex]);
+
     }
 
     void finishQuiz(){
