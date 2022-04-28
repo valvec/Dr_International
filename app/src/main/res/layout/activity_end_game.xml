@@ -9,13 +9,12 @@
         android:id="@+id/ScoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/error"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:paddingTop="30dp"
         android:paddingBottom="30dp"
 
-        />
+        android:text="@string/error" />
 
     <TextView
         android:id="@+id/HighScoreText"
@@ -49,27 +48,21 @@
     </RelativeLayout>
 
 
-
-
-
-
     <Button
         android:id="@+id/NewGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_game"
         android:layout_above="@+id/MainMenu"
         android:layout_centerInParent="true"
         android:onClick="onClickNG"
-       />
+        android:text="@string/new_game" />
 
     <Button
         android:id="@id/MainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/return_to_main_menu"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:onClick="onClickRM"
- />
+        android:text="@string/return_to_main_menu" />
 </RelativeLayout>
