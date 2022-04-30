@@ -15,6 +15,7 @@ import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.StreetViewPanoramaOptions;
 import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.StreetViewSource;
 import com.google.android.material.tabs.TabLayout;
 
@@ -82,6 +83,10 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
         ansB.setBackgroundColor(Color.WHITE);
         ansC.setBackgroundColor(Color.WHITE);
         ansD.setBackgroundColor(Color.WHITE);
+        ansA.setVisibility(View.VISIBLE);
+        ansB.setVisibility(View.VISIBLE);
+        ansC.setVisibility(View.VISIBLE);
+        ansD.setVisibility(View.VISIBLE);
 
         if(currentIndex == totalQuestion ){
             finishQuiz();
@@ -117,7 +122,7 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
         if (selectedAnswer==map.correctAnswers[currentIndex]){
             clickedButton.setBackgroundColor(Color.GREEN);
             currentIndex++;
-            score++;
+            score+=100;
             (new Handler()).postDelayed(this::naloziLokacijo, 2000);
 
         }
@@ -134,6 +139,47 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
+    }
+
+    public void onClickNewView(View view) {
+
+        LatLng newPos =new LatLng(map.koordinate[currentIndex].latitude+0.001,map.koordinate[currentIndex].longitude+0.001);
+        streetViewPanorama1.setPosition(newPos,StreetViewSource.OUTDOOR);
+        streetViewPanorama1.setStreetNamesEnabled(false);
+        streetViewPanorama1.setUserNavigationEnabled(false);
+        score-=50;
+        Toast toast =Toast.makeText(this,"-50", Toast.LENGTH_SHORT);
+        toast.show();
+
+    }
+
+    public void onClickPolovicka(View view) {
+        score-=50;
+        int removed=0;
+
+        while(removed<2) {
+            double randomNum2 = Math.round(Math.random() * 4);
+            if (randomNum2 >= 0 && randomNum2 < 1 && ansA.getText() != map.correctAnswers[currentIndex]) {
+                ansA.setVisibility(View.GONE);
+                removed++;
+            }
+            if (randomNum2 >= 1 && randomNum2 < 2 && ansB.getText() != map.correctAnswers[currentIndex]) {
+                ansB.setVisibility(View.GONE);
+                removed++;
+            }
+            if (randomNum2 >= 2 && randomNum2 < 3 && ansC.getText() != map.correctAnswers[currentIndex]) {
+                removed++;
+                ansC.setVisibility(View.GONE);
+            }
+            if (randomNum2 >= 3 && randomNum2 <= 4 && ansD.getText() != map.correctAnswers[currentIndex]) {
+                ansD.setVisibility(View.GONE);
+                removed++;
+            }
+        }
+        findViewById(R.id.polovicka).setVisibility(View.GONE);
+        Toast toast =Toast.makeText(this,"-50", Toast.LENGTH_SHORT);
+        toast.show();
+
     }
 }
 

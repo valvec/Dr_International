@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class End_game extends AppCompatActivity {
 
-
+int score;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -20,7 +20,7 @@ public class End_game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
         TextView scoreTv=findViewById(R.id.ScoreText);
-        int score=getIntent().getExtras().getInt("score");
+        score=getIntent().getExtras().getInt("score");
         scoreTv.setText(getString(R.string.ScoreText)+ score);
 
         SharedPreferences shramba = getPreferences(Context.MODE_PRIVATE);
@@ -45,5 +45,14 @@ public class End_game extends AppCompatActivity {
     public void onClickRM(View view) {
         Intent mainMenu= new Intent(this,MainActivity.class);
         startActivity(mainMenu);
+    }
+
+    public void onClickShare(View view) {
+        String message = "I just scored " + score+ " points on Dr. International. Download here: www.placeholder.link";
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(Intent.EXTRA_TEXT, message);
+
+        startActivity(Intent.createChooser(share, "Share"));
     }
 }

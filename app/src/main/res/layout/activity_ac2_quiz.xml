@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="290dp"
@@ -21,7 +21,7 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="27dp"
@@ -33,7 +33,7 @@
 
     <Button
         android:id="@id/button1"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="27dp"
@@ -52,7 +52,7 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="290dp"
@@ -62,4 +62,37 @@
         android:padding="20dp"
 
         />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+        <Button
+            android:id="@+id/newView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="New Street View"
+            android:onClick="onClickNewView"
+        />
+        <Button
+            android:id="@+id/polovicka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/newView"
+            android:hint="50/50"
+            android:onClick="onClickPolovicka"
+
+            />
+
+    </RelativeLayout>
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
