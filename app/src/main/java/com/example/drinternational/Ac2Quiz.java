@@ -156,24 +156,29 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     public void onClickPolovicka(View view) {
         score-=50;
         int removed=0;
+        int rm=0;
 
         while(removed<2) {
             double randomNum2 = Math.round(Math.random() * 4);
-            if (randomNum2 >= 0 && randomNum2 < 1 && ansA.getText() != map.correctAnswers[currentIndex]) {
+            if (randomNum2 >= 0 && randomNum2 < 1 && ansA.getText() != map.correctAnswers[currentIndex] && rm!=1) {
                 ansA.setVisibility(View.GONE);
                 removed++;
+                rm=1;
             }
-            if (randomNum2 >= 1 && randomNum2 < 2 && ansB.getText() != map.correctAnswers[currentIndex]) {
+            if (randomNum2 >= 1 && randomNum2 < 2 && ansB.getText() != map.correctAnswers[currentIndex]&& rm!=2) {
                 ansB.setVisibility(View.GONE);
                 removed++;
+                rm=2;
             }
-            if (randomNum2 >= 2 && randomNum2 < 3 && ansC.getText() != map.correctAnswers[currentIndex]) {
+            if (randomNum2 >= 2 && randomNum2 < 3 && ansC.getText() != map.correctAnswers[currentIndex]&& rm!=3) {
                 removed++;
                 ansC.setVisibility(View.GONE);
+                rm=3;
             }
-            if (randomNum2 >= 3 && randomNum2 <= 4 && ansD.getText() != map.correctAnswers[currentIndex]) {
+            if (randomNum2 >= 3 && randomNum2 <= 4 && ansD.getText() != map.correctAnswers[currentIndex]&& rm!=4) {
                 ansD.setVisibility(View.GONE);
                 removed++;
+                rm=4;
             }
         }
         findViewById(R.id.polovicka).setVisibility(View.GONE);
