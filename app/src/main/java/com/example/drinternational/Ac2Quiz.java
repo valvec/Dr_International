@@ -27,6 +27,7 @@ import java.util.Locale;
 
 
 public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback, View.OnClickListener {
+    String countryName;
     int currentIndex=0;
     int totalQuestion = map.koordinate.length;
     Button ansA, ansB, ansC, ansD;
@@ -116,10 +117,10 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
 
         if (addresses.size() > 0)
         {
-            String countryName=addresses.get(0).getCountryName();
-            Toast.makeText(this, countryName, Toast.LENGTH_LONG).show();
+            countryName=addresses.get(0).getCountryName();
+            //Toast.makeText(this, countryName, Toast.LENGTH_LONG).show();
         }
-        //konec
+        //
 
         streetViewPanorama1.setPosition(map.koordinate[currentIndex],StreetViewSource.OUTDOOR);
         streetViewPanorama1.setStreetNamesEnabled(false);
@@ -130,10 +131,10 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
         ansD.setText(map.allCountries[selectionIndexesABCD[3]]);
 
         double randomNum2 = Math.round(Math.random() * 4);
-        if (randomNum2 >= 0 && randomNum2 < 1) ansA.setText(map.correctAnswers[currentIndex]);
-        if (randomNum2 >= 1 && randomNum2 < 2) ansB.setText(map.correctAnswers[currentIndex]);
-        if (randomNum2 >= 2 && randomNum2 < 3) ansC.setText(map.correctAnswers[currentIndex]);
-        if (randomNum2 >= 3 && randomNum2 <= 4) ansD.setText(map.correctAnswers[currentIndex]);
+        if (randomNum2 >= 0 && randomNum2 < 1) ansA.setText(countryName);
+        if (randomNum2 >= 1 && randomNum2 < 2) ansB.setText(countryName);
+        if (randomNum2 >= 2 && randomNum2 < 3) ansC.setText(countryName);
+        if (randomNum2 >= 3 && randomNum2 <= 4) ansD.setText(countryName);
 
     }
 
@@ -147,7 +148,7 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     public void onClick(View view) {
         Button clickedButton = (Button) view;
         selectedAnswer  = clickedButton.getText().toString();
-        if (selectedAnswer==map.correctAnswers[currentIndex]){
+        if (selectedAnswer==countryName){
             clickedButton.setBackgroundColor(Color.GREEN);
             currentIndex++;
             score+=100;
@@ -188,22 +189,22 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
 
         while(removed<2) {
             double randomNum2 = Math.round(Math.random() * 4);
-            if (randomNum2 >= 0 && randomNum2 < 1 && ansA.getText() != map.correctAnswers[currentIndex] && rm!=1) {
+            if (randomNum2 >= 0 && randomNum2 < 1 && ansA.getText() != countryName && rm!=1) {
                 ansA.setVisibility(View.GONE);
                 removed++;
                 rm=1;
             }
-            if (randomNum2 >= 1 && randomNum2 < 2 && ansB.getText() != map.correctAnswers[currentIndex]&& rm!=2) {
+            if (randomNum2 >= 1 && randomNum2 < 2 && ansB.getText() != countryName && rm!=2) {
                 ansB.setVisibility(View.GONE);
                 removed++;
                 rm=2;
             }
-            if (randomNum2 >= 2 && randomNum2 < 3 && ansC.getText() != map.correctAnswers[currentIndex]&& rm!=3) {
+            if (randomNum2 >= 2 && randomNum2 < 3 && ansC.getText() != countryName && rm!=3) {
                 removed++;
                 ansC.setVisibility(View.GONE);
                 rm=3;
             }
-            if (randomNum2 >= 3 && randomNum2 <= 4 && ansD.getText() != map.correctAnswers[currentIndex]&& rm!=4) {
+            if (randomNum2 >= 3 && randomNum2 <= 4 && ansD.getText() != countryName && rm!=4) {
                 ansD.setVisibility(View.GONE);
                 removed++;
                 rm=4;
