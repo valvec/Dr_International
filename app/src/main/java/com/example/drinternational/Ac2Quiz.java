@@ -2,6 +2,8 @@ package com.example.drinternational;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -18,6 +20,10 @@ import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.StreetViewSource;
 import com.google.android.material.tabs.TabLayout;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback, View.OnClickListener {
@@ -75,7 +81,13 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
             if(selectionIndexesABCD[2]!=randomNum && selectionIndexesABCD[1]!=randomNum && selectionIndexesABCD[0]!=randomNum){selectionIndexesABCD[3]=randomNum;}
 
         }
+
+
+
+
+
         //Toast.makeText(this, Integer.toString(randomNum), Toast.LENGTH_LONG).show();
+
 
 
 
@@ -92,6 +104,22 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
             finishQuiz();
             return;
         }
+
+        // Ime drzave iz koordinat
+        Geocoder gcd = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses = null;
+        try {
+            addresses = gcd.getFromLocation(map.koordinate[currentIndex].latitude, map.koordinate[currentIndex].longitude, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (addresses.size() > 0)
+        {
+            String countryName=addresses.get(0).getCountryName();
+            Toast.makeText(this, countryName, Toast.LENGTH_LONG).show();
+        }
+        //konec
 
         streetViewPanorama1.setPosition(map.koordinate[currentIndex],StreetViewSource.OUTDOOR);
         streetViewPanorama1.setStreetNamesEnabled(false);

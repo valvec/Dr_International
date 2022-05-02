@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonNewGame;
+    private Button buttonNewGame, buttonSelectMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +23,23 @@ public class MainActivity extends AppCompatActivity {
                 openAc2Quiz();
             }
         });
+
+        buttonSelectMap = (Button) findViewById(R.id.btnSelectMap);
+        buttonSelectMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAc3SelectMap();
+            }
+        });
     }
 
     public void openAc2Quiz(){
         Intent intentNewGame = new Intent(this, Ac2Quiz.class);
         startActivity(intentNewGame);
+    }
+
+    public void openAc3SelectMap(){
+        Intent intentSelectMap = new Intent(this, Ac3SelectMap.class);
+        startActivity(intentSelectMap);
     }
 }
