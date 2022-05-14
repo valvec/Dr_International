@@ -162,7 +162,7 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
     public void onClick(View view) {
         Button clickedButton = (Button) view;
         selectedAnswer  = clickedButton.getText().toString();
-        if (selectedAnswer==countryName){
+        if (selectedAnswer.equals(countryName)){
             clickedButton.setBackgroundColor(Color.GREEN);
             currentIndex++;
             score+=100;
