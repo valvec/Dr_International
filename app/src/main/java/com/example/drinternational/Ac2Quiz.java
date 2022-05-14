@@ -107,7 +107,7 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
         }
 
         // Ime drzave iz koordinat
-        Geocoder gcd = new Geocoder(this, Locale.getDefault());
+        Geocoder gcd = new Geocoder(this, Locale.US);
         List<Address> addresses = null;
         try {
             addresses = gcd.getFromLocation(map.koordinate[currentIndex].latitude, map.koordinate[currentIndex].longitude, 1);
@@ -173,7 +173,7 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
     public void onClickNewView(View view) {
 
         LatLng newPos =new LatLng(map.koordinate[currentIndex].latitude+0.001,map.koordinate[currentIndex].longitude+0.001);
-        streetViewPanorama1.setPosition(newPos,StreetViewSource.OUTDOOR);
+        streetViewPanorama1.setPosition(newPos,1000,StreetViewSource.OUTDOOR);
         streetViewPanorama1.setStreetNamesEnabled(false);
         streetViewPanorama1.setUserNavigationEnabled(false);
         score-=50;
@@ -213,8 +213,9 @@ public class Ac2Quiz extends AppCompatActivity implements OnStreetViewPanoramaRe
         findViewById(R.id.polovicka).setVisibility(View.GONE);
         Toast toast =Toast.makeText(this,"-50", Toast.LENGTH_SHORT);
         toast.show();
-
     }
 }
+
+
 
 //wazzzupps
