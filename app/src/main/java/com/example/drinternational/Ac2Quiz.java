@@ -135,16 +135,23 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
 
 
 
-        if (odg1 != countryName) ansA.setText(map.allCountries[selectionIndexesABCD[0]]);
-        if (odg2 != countryName) ansB.setText(map.allCountries[selectionIndexesABCD[1]]);
-        if (odg3 != countryName) ansC.setText(map.allCountries[selectionIndexesABCD[2]]);
-        if (odg4 != countryName) ansD.setText(map.allCountries[selectionIndexesABCD[3]]);
+        ansA.setText(map.allCountries[selectionIndexesABCD[0]]);
+        ansB.setText(map.allCountries[selectionIndexesABCD[1]]);
+        ansC.setText(map.allCountries[selectionIndexesABCD[2]]);
+        ansD.setText(map.allCountries[selectionIndexesABCD[3]]);
+
+        int ponovljeno=0;
+        if (odg1.equals(countryName)) ponovljeno=1;
+        if (odg2.equals(countryName)) ponovljeno=1;
+        if (odg3.equals(countryName)) ponovljeno=1;
+        if (odg4.equals(countryName)) ponovljeno=1;
+
 
         double randomNum2 = Math.round(Math.random() * 4);
-        if (randomNum2 >= 0 && randomNum2 < 1) ansA.setText(countryName);
-        if (randomNum2 >= 1 && randomNum2 < 2) ansB.setText(countryName);
-        if (randomNum2 >= 2 && randomNum2 < 3) ansC.setText(countryName);
-        if (randomNum2 >= 3 && randomNum2 <= 4) ansD.setText(countryName);
+        if (randomNum2 >= 0 && randomNum2 < 1 && ponovljeno==0) ansA.setText(countryName);
+        if (randomNum2 >= 1 && randomNum2 < 2 && ponovljeno==0) ansB.setText(countryName);
+        if (randomNum2 >= 2 && randomNum2 < 3 && ponovljeno==0) ansC.setText(countryName);
+        if (randomNum2 >= 3 && randomNum2 <= 4 && ponovljeno==0) ansD.setText(countryName);
         streetViewPanorama1.setOnStreetViewPanoramaChangeListener(this);
     }
 
