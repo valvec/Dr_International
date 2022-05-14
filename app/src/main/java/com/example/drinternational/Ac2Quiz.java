@@ -118,17 +118,27 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
         if (addresses.size() > 0)
         {
             countryName=addresses.get(0).getCountryName();
-            //Toast.makeText(this, countryName, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, countryName, Toast.LENGTH_LONG).show();
         }
         //
 
         streetViewPanorama1.setPosition(map.koordinate[currentIndex],10000,StreetViewSource.OUTDOOR);
         streetViewPanorama1.setStreetNamesEnabled(false);
         streetViewPanorama1.setUserNavigationEnabled(false);
-        ansA.setText(map.allCountries[selectionIndexesABCD[0]]);
-        ansB.setText(map.allCountries[selectionIndexesABCD[1]]);
-        ansC.setText(map.allCountries[selectionIndexesABCD[2]]);
-        ansD.setText(map.allCountries[selectionIndexesABCD[3]]);
+
+        String odg1, odg2, odg3, odg4;
+        odg1 = map.allCountries[selectionIndexesABCD[0]];
+        odg2 = map.allCountries[selectionIndexesABCD[1]];
+        odg3 = map.allCountries[selectionIndexesABCD[2]];
+        odg4 = map.allCountries[selectionIndexesABCD[3]];
+
+
+
+
+        if (odg1 != countryName) ansA.setText(map.allCountries[selectionIndexesABCD[0]]);
+        if (odg2 != countryName) ansB.setText(map.allCountries[selectionIndexesABCD[1]]);
+        if (odg3 != countryName) ansC.setText(map.allCountries[selectionIndexesABCD[2]]);
+        if (odg4 != countryName) ansD.setText(map.allCountries[selectionIndexesABCD[3]]);
 
         double randomNum2 = Math.round(Math.random() * 4);
         if (randomNum2 >= 0 && randomNum2 < 1) ansA.setText(countryName);
