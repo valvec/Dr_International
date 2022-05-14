@@ -72,14 +72,11 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
         selectionIndexesABCD[0] = randomNum;
 
         while (selectionIndexesABCD[1]==-1 || selectionIndexesABCD[2]==-1 || selectionIndexesABCD[3]==-1) {
-            randomNum = (int)(Math.random() * (map.allCountries.length-1));
-            if (selectionIndexesABCD[0] != randomNum) { selectionIndexesABCD[1] = randomNum; }
 
             randomNum = (int)(Math.random() * (map.allCountries.length-1));
-            if(selectionIndexesABCD[1]!=randomNum && selectionIndexesABCD[0]!=randomNum){selectionIndexesABCD[2]=randomNum;}
-
-            randomNum = (int)(Math.random() * (map.allCountries.length-1));
-            if(selectionIndexesABCD[2]!=randomNum && selectionIndexesABCD[1]!=randomNum && selectionIndexesABCD[0]!=randomNum){selectionIndexesABCD[3]=randomNum;}
+            if (selectionIndexesABCD[0] != randomNum && selectionIndexesABCD[1]==-1) { selectionIndexesABCD[1] = randomNum; }
+            if(selectionIndexesABCD[1]!=randomNum && selectionIndexesABCD[0]!=randomNum && selectionIndexesABCD[2]==-1){selectionIndexesABCD[2]=randomNum;}
+            if(selectionIndexesABCD[2]!=randomNum && selectionIndexesABCD[1]!=randomNum && selectionIndexesABCD[0]!=randomNum && selectionIndexesABCD[3]==-1){selectionIndexesABCD[3]=randomNum;}
 
         }
 
