@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/drawable/custom_btn.xml" value="0.4625" />
+        <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/drawable/custom_button.xml" value="0.5435" />
+        <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/drawable/custombtn.xml" value="0.3785" />
         <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/drawable/gradient_background.xml" value="0.1" />
         <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/layout/activity_ac2_quiz.xml" value="0.33" />
         <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/layout/activity_ac3_select_map.xml" value="0.55" />
         <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/layout/activity_end_game.xml" value="0.55" />
-        <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/urban/AndroidStudioProjects/DrInternational/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/android/Dr_International/app/src/main/res/layout/activity_end_game.xml" value="0.21467391304347827" />
       </map>
     </option>

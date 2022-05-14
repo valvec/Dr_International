@@ -219,9 +219,10 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
     @Override
     public void onStreetViewPanoramaChange(@NonNull StreetViewPanoramaLocation streetViewPanoramaLocation) {
         if (streetViewPanoramaLocation != null && streetViewPanoramaLocation.links != null) {
-            Toast.makeText(Ac2Quiz.this, "StreetView Camera Found", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(Ac2Quiz.this, "StreetView Camera Found", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(Ac2Quiz.this, "StreetView Camera not Found", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(Ac2Quiz.this, "StreetView Camera not Found", Toast.LENGTH_SHORT).show();
+            currentIndex++;
             naloziLokacijo();
         }
 
@@ -234,11 +235,13 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
             double longi=(Math.random() * 2) +14;
 
         map.koordinate[currentIndex]=new LatLng(lat,longi);
-        Toast.makeText(Ac2Quiz.this, String.valueOf(lat) + "  "+String.valueOf(longi), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(Ac2Quiz.this, String.valueOf(lat) + "  "+String.valueOf(longi), Toast.LENGTH_SHORT).show();
+
 
         }
-        currentIndex=0;
 
+        currentIndex=0;
+        naloziLokacijo();
     }
 
 
