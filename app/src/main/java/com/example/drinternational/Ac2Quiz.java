@@ -28,6 +28,7 @@ import java.util.Locale;
 
 public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback, View.OnClickListener, StreetViewPanorama.OnStreetViewPanoramaChangeListener {
     String countryName;
+    int NL;
     int currentIndex=0;
     int totalQuestion = map.koordinate.length;
     Button ansA, ansB, ansC, ansD;
@@ -63,6 +64,7 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
 
 
     void naloziLokacijo(){
+        NL=0;
         int randomNum;
         int u = 0;
         int selectionIndexesABCD[] = {-1,-1,-1,-1};
@@ -185,9 +187,9 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
     }
 
     public void onClickNewView(View view) {
-
-        LatLng newPos =new LatLng(map.koordinate[currentIndex].latitude+0.001,map.koordinate[currentIndex].longitude+0.001);
-        streetViewPanorama1.setPosition(newPos,1000,StreetViewSource.OUTDOOR);
+        NL=1;
+        LatLng newPos =new LatLng(map.koordinate[currentIndex].latitude+0.1,map.koordinate[currentIndex].longitude+0.1);
+        streetViewPanorama1.setPosition(newPos,10000,StreetViewSource.OUTDOOR);
         streetViewPanorama1.setStreetNamesEnabled(false);
         streetViewPanorama1.setUserNavigationEnabled(false);
         score-=50;
@@ -235,6 +237,10 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
         if (streetViewPanoramaLocation != null && streetViewPanoramaLocation.links != null) {
             //Toast.makeText(Ac2Quiz.this, "StreetView Camera Found", Toast.LENGTH_SHORT).show();
         } else {
+            if (NL==1){
+                NL=0;
+                return;
+            }
             //Toast.makeText(Ac2Quiz.this, "StreetView Camera not Found", Toast.LENGTH_SHORT).show();
             currentIndex++;
             naloziLokacijo();
@@ -244,9 +250,12 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
 
     void generateMap(){
 
+
+
         for(currentIndex=0;currentIndex<4;currentIndex++){
-            double lat=(Math.random() * 2)+ 47;
-            double longi=(Math.random() * 2) +14;
+            int randomNum = (int)(Math.random() * (map.selected.length)-0.001);
+            double lat=(Math.random() * map.selected[randomNum][0][0])+ map.selected[randomNum][0][1];
+            double longi=(Math.random() * map.selected[randomNum][1][0]) +map.selected[randomNum][1][1];
 
         map.koordinate[currentIndex]=new LatLng(lat,longi);
         //Toast.makeText(Ac2Quiz.this, String.valueOf(lat) + "  "+String.valueOf(longi), Toast.LENGTH_SHORT).show();
