@@ -4,15 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ac3SelectMap">
+    tools:context=".Ac3SelectMap"
+    android:background="@drawable/gradient_background"
 
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        >
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="glista"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="3dp"
+        android:text="@string/map_select"
+
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        />
+
+
+    <Button
+        android:id="@+id/America"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:text="@string/americas"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="3dp"
+        android:onClick="onClickA"/>
+        <Button
+            android:id="@+id/EU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/eu"
+            android:layout_margin="3dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/America"
+            android:onClick="onClickE"/>
+        <Button
+            android:id="@+id/WORLD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_below="@id/EU"
+
+            android:text="@string/world"
+            android:layout_centerHorizontal="true"
+            android:onClick="onClickW"/>
+
+
+
+
+    </RelativeLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

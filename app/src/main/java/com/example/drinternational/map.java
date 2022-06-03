@@ -297,6 +297,6 @@ public class map {
 
     };
 
-    public static double[][][] selected=Americas;
+    public static double[][][] selected=World;
 
 }

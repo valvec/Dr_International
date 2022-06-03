@@ -11,4 +11,8 @@
     <string name="HighScoreText">High score: </string>
     <string name="ScoreText">Score: </string>
     <string name="game_over">GAME OVER</string>
+    <string name="americas">Americas</string>
+    <string name="eu">EU</string>
+    <string name="world">WORLD</string>
+    <string name="map_select">Choose which location you want to play:</string>
 </resources>
