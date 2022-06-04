@@ -14,6 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:paddingTop="30dp"
+        android:textColor="@color/white"
         android:paddingBottom="30dp"
         android:textSize="20dp"
 
@@ -26,50 +27,54 @@
         android:text="@string/error"
         android:layout_alignBottom="@id/ScoreText"
         android:layout_centerInParent="true"
+        android:textColor="@color/white"
         android:textSize="15dp"
         />
 
     <TextView
+        android:id="@+id/GAMEOVER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/fb"
-        android:text="@string/game_over"
-        android:layout_centerInParent="true"
-        android:textSize="40dp"
-        android:padding="50dp"
 
-        />
+
+        android:layout_centerInParent="true"
+        android:padding="50dp"
+        android:text="@string/game_over"
+        android:textColor="@color/white"
+        android:textSize="40dp" />
 
 
 
 
         <Button
-            android:id="@id/fb"
+            android:id="@+id/fb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/share_on_facebook"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_alignParentBottom="true"
             android:onClick="onClickShare"/>
-
-
-
-
 
 
     <Button
         android:id="@+id/NewGame"
-        android:layout_width="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/MainMenu"
+
+        android:layout_below="@id/GAMEOVER"
         android:layout_centerInParent="true"
         android:onClick="onClickNG"
-        android:text="@string/new_game" />
+        android:text="@string/new_game"
+        android:textStyle="bold" />
 
     <Button
-        android:id="@id/MainMenu"
-        android:layout_width="wrap_content"
+        android:id="@+id/MainMenu"
+        android:layout_width="200dp"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/NewGame"
         android:layout_centerInParent="true"
         android:onClick="onClickRM"
         android:text="@string/return_to_main_menu" />

@@ -1,11 +1,13 @@
 package com.example.drinternational;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,7 +23,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.StreetViewPanoramaLocation;
 import com.google.android.gms.maps.model.StreetViewSource;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONStringer;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,6 +47,14 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
     StreetViewPanorama streetViewPanorama1;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        generateMap();
+       String C= getJsonFromAssets(getApplicationContext(),"countries.json");
+        C = C.replace("\n", "").replace("\r", "");
+       String [] countries=C.split(",");
+       map.allCountries=countries;
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ac2_quiz);
         SupportStreetViewPanoramaFragment streetViewPanoramaFragment = (SupportStreetViewPanoramaFragment) getSupportFragmentManager().findFragmentById(R.id.street_view_panorama);
@@ -53,6 +71,7 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
         ansB.setOnClickListener(this);
         ansC.setOnClickListener(this);
         ansD.setOnClickListener(this);
+
     }
 
     @Override
@@ -102,6 +121,7 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
 
         if(currentIndex == totalQuestion ){
             generateMap();
+            naloziLokacijo();
             return;
         }
 
@@ -117,7 +137,7 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
         if (addresses.size() > 0)
         {
             countryName=addresses.get(0).getCountryName();
-            Toast.makeText(this, countryName, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, countryName, Toast.LENGTH_LONG).show();
         }
         //
 
@@ -264,7 +284,23 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
         }
 
         currentIndex=0;
-        naloziLokacijo();
+
+    }
+
+    static String getJsonFromAssets(Context context, String fileName) {
+        String jsonString;
+        try {
+            InputStream is = context.getAssets().open(fileName);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            jsonString = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return jsonString;
     }
 
 
