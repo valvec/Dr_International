@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/ScoreText"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -44,25 +45,25 @@
         android:textSize="40dp" />
 
 
-
-
-        <Button
-            android:id="@+id/fb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/share_on_facebook"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_alignParentBottom="true"
-            android:onClick="onClickShare"/>
+    <Button
+        android:id="@+id/fb"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:onClick="onClickShare"
+        android:background="@drawable/round_btn"
+        android:text="@string/share_on_facebook" />
 
 
     <Button
         android:id="@+id/NewGame"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
+        android:layout_margin="10dp"
         android:layout_height="wrap_content"
-
+        android:background="@drawable/round_btn"
         android:layout_below="@id/GAMEOVER"
         android:layout_centerInParent="true"
         android:onClick="onClickNG"
@@ -71,7 +72,8 @@
 
     <Button
         android:id="@+id/MainMenu"
-        android:layout_width="200dp"
+        android:background="@drawable/round_btn"
+        android:layout_width="300dp"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_height="wrap_content"
         android:layout_below="@id/NewGame"

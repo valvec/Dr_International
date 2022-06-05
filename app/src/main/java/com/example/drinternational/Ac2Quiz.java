@@ -1,5 +1,8 @@
 package com.example.drinternational;
 
+import static com.example.drinternational.R.drawable.round_btn;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -84,6 +87,7 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
 
 
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     void naloziLokacijo(){
         NL=0;
         int randomNum;
@@ -112,10 +116,10 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
 
 
 
-        ansA.setBackgroundColor(Color.BLUE);
-        ansB.setBackgroundColor(Color.BLUE);
-        ansC.setBackgroundColor(Color.BLUE);
-        ansD.setBackgroundColor(Color.BLUE);
+        ansA.setBackground(getDrawable(round_btn));
+        ansB.setBackground(getDrawable(round_btn));
+        ansC.setBackground(getDrawable(round_btn));
+        ansD.setBackground(getDrawable(round_btn));
         ansA.setVisibility(View.VISIBLE);
         ansB.setVisibility(View.VISIBLE);
         ansC.setVisibility(View.VISIBLE);
