@@ -41,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
         TextView tvTopScore=findViewById(R.id.tvTopScore);
         tvTopScore.setText(getString(R.string.HighScoreText)+ topScore);
 
+        TextView tvSelectedMap = findViewById(R.id.tvSelectedMap);
+        String selectedMapString;
+        selectedMapString = " ";
+        if (map.selected==map.World){selectedMapString = "Selected Map is World";};
+        if (map.selected==map.Europe){selectedMapString = "Selected Map is Europe";};
+        if (map.selected==map.Americas){selectedMapString = "Selected Map is North and South America";};
+        tvSelectedMap.setText(selectedMapString);
     }
 
     public void openAc2Quiz(){
