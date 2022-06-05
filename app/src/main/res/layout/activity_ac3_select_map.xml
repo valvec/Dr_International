@@ -35,7 +35,7 @@
             android:id="@+id/America"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="200dp"
-
+            android:background="@drawable/round_btn"
             android:layout_height="wrap_content"
             android:layout_below="@id/textView"
             android:layout_centerHorizontal="true"
@@ -46,6 +46,7 @@
             android:onClick="onClickA"
             android:text="@string/americas" />
         <Button
+            android:background="@drawable/round_btn"
             android:id="@+id/EU"
             android:layout_width="200dp"
             style="@style/Widget.AppCompat.Button.Colored"
@@ -57,6 +58,7 @@
             android:layout_below="@id/America"
             android:onClick="onClickE"/>
         <Button
+            android:background="@drawable/round_btn"
             android:id="@+id/WORLD"
             android:layout_width="200dp"
             style="@style/Widget.AppCompat.Button.Colored"
