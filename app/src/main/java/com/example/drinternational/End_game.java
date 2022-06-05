@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ int score;
         score=getIntent().getExtras().getInt("score");
         scoreTv.setText(getString(R.string.ScoreText)+ score);
 
-        SharedPreferences shramba = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences shramba = PreferenceManager.getDefaultSharedPreferences(this);
         String kljucTopScore = getResources().getString(R.string.klucTopScore);
         int topScore = shramba.getInt(kljucTopScore,0);
 
