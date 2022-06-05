@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.StreetViewPanoramaLocation;
 import com.google.android.gms.maps.model.StreetViewSource;
+import com.google.android.material.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -110,10 +112,10 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
 
 
 
-        ansA.setBackgroundColor(Color.WHITE);
-        ansB.setBackgroundColor(Color.WHITE);
-        ansC.setBackgroundColor(Color.WHITE);
-        ansD.setBackgroundColor(Color.WHITE);
+        ansA.setBackgroundColor(Color.BLUE);
+        ansB.setBackgroundColor(Color.BLUE);
+        ansC.setBackgroundColor(Color.BLUE);
+        ansD.setBackgroundColor(Color.BLUE);
         ansA.setVisibility(View.VISIBLE);
         ansB.setVisibility(View.VISIBLE);
         ansC.setVisibility(View.VISIBLE);
@@ -172,6 +174,10 @@ public class Ac2Quiz<streetViewPanoramaCamera> extends AppCompatActivity impleme
         if (randomNum2 >= 2 && randomNum2 < 3 && ponovljeno==0) ansC.setText(countryName);
         if (randomNum2 >= 3 && randomNum2 <= 4 && ponovljeno==0) ansD.setText(countryName);
         streetViewPanorama1.setOnStreetViewPanoramaChangeListener(this);
+
+        TextView scoreTv=findViewById(R.id.ScoreMidGame);
+        scoreTv.setText(getString(R.string.ScoreText)+ score);
+
     }
 
     void finishQuiz(){

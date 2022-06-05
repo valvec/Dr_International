@@ -37,6 +37,11 @@ int score;
         editor.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        //preprecim uporabo gumba za nazaj za vrnite v končano igro
+    }
+
     public void onClickNG(View view) {
         Intent Ac2Quiz=new Intent(this, Ac2Quiz.class);
         startActivity(Ac2Quiz);
